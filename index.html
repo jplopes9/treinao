@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Projeto TAF — Treino & Evolução</title>
+<style>
+:root{--bg:#f4f6fa;--panel:#fff;--ink:#172033;--muted:#657087;--line:#e5e9f1;--navy:#101827;--navy2:#1b2940;--lime:#c7f36b;--blue:#4468f5;--blue-soft:#edf1ff;--green:#197b52;--green-soft:#e8f7ef;--amber:#9a5b00;--amber-soft:#fff3db;--red:#a83333;--red-soft:#fff0f0;--radius:18px;--shadow:0 8px 28px rgba(23,32,51,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #9eb0ff;outline-offset:2px}.shell{max-width:1220px;margin:auto;padding:18px}.topbar{background:var(--navy);color:white;border-radius:24px;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:var(--lime);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:21px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;color:#b9c5d8;font-weight:800}.topbar h1{font-size:clamp(21px,3vw,30px);line-height:1.15;margin:3px 0}.topbar p{margin:5px 0 0;color:#c8d1df;font-size:13px}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:white;color:var(--ink);padding:10px 13px;border-radius:12px;font-weight:750;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn.primary{background:var(--lime);border-color:var(--lime);color:var(--navy)}.btn.dark{background:var(--navy2);border-color:#34435b;color:white}.btn.soft{background:var(--blue-soft);border-color:transparent;color:#2946c9}.btn.danger{background:var(--red-soft);border-color:transparent;color:var(--red)}.btn:disabled{opacity:.45;cursor:not-allowed}.nav{display:flex;gap:8px;overflow:auto;padding:15px 0 5px;scrollbar-width:none}.nav button{white-space:nowrap;border:0;background:transparent;padding:10px 14px;border-radius:12px;color:var(--muted);font-weight:800}.nav button.active{background:var(--navy);color:white}.view{display:none}.view.active{display:block}.grid{display:grid;gap:16px}.grid.kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin:14px 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);min-width:0}.card h2,.card h3{margin:0 0 10px;line-height:1.25}.card h2{font-size:19px}.card h3{font-size:16px}.muted{color:var(--muted)}.small{font-size:12px}.kpi-label{font-size:12px;color:var(--muted);font-weight:750}.kpi-value{font-size:29px;font-weight:900;letter-spacing:-.04em;margin:4px 0}.kpi-note{font-size:12px;color:var(--muted)}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:22px 0 12px}.section-head h2{font-size:22px;margin:0}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.dashboard-grid{grid-template-columns:1.3fr .7fr}.week-grid{grid-template-columns:repeat(7,minmax(0,1fr))}.day-card{border:1px solid var(--line);border-radius:14px;padding:12px;background:white;min-height:145px;display:flex;flex-direction:column;gap:8px}.day-card .day{font-weight:900;font-size:12px;color:var(--muted)}.day-card .day-title{font-weight:850;font-size:13px;line-height:1.3}.tag{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:850;background:#eef1f6;color:#46536b;width:max-content;max-width:100%}.tag.blue{background:var(--blue-soft);color:#304ac6}.tag.green{background:var(--green-soft);color:var(--green)}.tag.amber{background:var(--amber-soft);color:var(--amber)}.tag.lime{background:#f0fad9;color:#46670b}.day-card .btn{margin-top:auto;padding:8px;font-size:11px}.progress{height:8px;background:#edf0f5;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:var(--blue);width:0;transition:width .2s}.stack{display:flex;flex-direction:column;gap:10px}.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}.pill{background:#f0f2f7;padding:5px 9px;border-radius:9px;font-size:12px;font-weight:800}.exercise-list{display:flex;flex-direction:column;gap:10px}.exercise{border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start}.exercise.done{background:#f4fbf7;border-color:#bfe8d0}.check{width:22px;height:22px;border-radius:7px;border:2px solid #b8c2d4;display:grid;place-items:center;margin-top:2px;background:white;color:white}.exercise.done .check{background:var(--green);border-color:var(--green)}.exercise h4{margin:0 0 4px;font-size:14px}.exercise p{margin:0;color:var(--muted);font-size:12px}.exercise .dose{font-size:12px;font-weight:900;white-space:nowrap;background:#f0f2f7;border-radius:8px;padding:6px 8px}.exercise .details{grid-column:2/4;margin-top:0;padding-top:9px;border-top:1px solid var(--line);display:none;color:#49556b;font-size:12px}.exercise.open .details{display:block}.exercise-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.exercise-actions button{font-size:11px;padding:6px 8px}.exercise-actions .order-btn{min-width:34px}.workout-tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.editor-panel{border:1px solid #cfd8ff;background:#f8f9ff;border-radius:14px;padding:14px;margin:12px 0}.editor-panel h3{margin:0 0 12px}.editor-panel .fields{margin-bottom:10px}.editor-actions{display:flex;gap:8px;flex-wrap:wrap}.workout-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px}.side-sticky{align-self:start;position:sticky;top:12px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:12px;font-weight:800;color:#4b5870}.field input,.field select,.field textarea{width:100%;border:1px solid #dbe1eb;border-radius:11px;padding:10px 11px;background:white;color:var(--ink)}.field textarea{min-height:84px;resize:vertical}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.metric{background:#f6f8fc;border-radius:12px;padding:12px}.metric strong{display:block;font-size:19px}.metric span{font-size:11px;color:var(--muted)}.notice{border-radius:13px;padding:12px 14px;font-size:13px;background:var(--blue-soft);color:#2e438e}.notice.warn{background:var(--amber-soft);color:#784900}.notice.danger{background:var(--red-soft);color:#8f2929}.checkline{display:flex;gap:9px;align-items:flex-start}.checkline input{margin-top:4px;accent-color:var(--blue)}.checkline label{font-size:13px}.timer{font-size:40px;font-weight:900;letter-spacing:-.04em;font-variant-numeric:tabular-nums}.timer-buttons{display:flex;gap:8px;flex-wrap:wrap}.week-tabs{display:flex;gap:7px;flex-wrap:wrap}.week-tabs button{border:1px solid var(--line);border-radius:10px;background:white;padding:8px 11px;font-weight:800;color:var(--muted)}.week-tabs button.active{background:var(--navy);color:white;border-color:var(--navy)}.day-tabs{display:flex;gap:6px;flex-wrap:wrap}.day-tabs button{border:1px solid var(--line);background:white;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:800}.day-tabs button.active{background:var(--blue-soft);color:#304ac6;border-color:#d5ddff}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.status{font-size:12px;font-weight:850}.status.good{color:var(--green)}.status.pending{color:var(--amber)}.empty{padding:28px;text-align:center;color:var(--muted)}.footer{padding:22px 4px 10px;color:var(--muted);font-size:11px;text-align:center}.icon{width:20px;height:20px;display:inline-block;vertical-align:middle}.hidden{display:none!important}.callout-title{font-weight:900;margin-bottom:4px}.day-image{width:100%;height:100px;border-radius:12px;background:linear-gradient(135deg,#dfe7ff,#f1f4fc);display:grid;place-items:center;color:#4260dc;margin-bottom:8px}.day-image svg{width:50px;height:50px}.checklist{display:flex;flex-direction:column;gap:12px}.checklist .checkline{padding-bottom:10px;border-bottom:1px solid var(--line)}.checklist .checkline:last-child{border:0}
+@media(max-width:900px){.grid.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.week-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.dashboard-grid{grid-template-columns:1fr}.workout-layout{grid-template-columns:1fr}.side-sticky{position:static}.topbar{align-items:flex-start;flex-direction:column}.top-actions{width:100%}}
+@media(max-width:560px){.shell{padding:10px}.topbar{padding:18px;border-radius:18px}.grid.kpis{gap:9px}.card{padding:14px}.week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fields,.metric-row{grid-template-columns:1fr}.exercise{grid-template-columns:auto 1fr}.exercise .dose{grid-column:2;justify-self:start;grid-row:2}.exercise .details{grid-column:2}.section-head{align-items:flex-start;flex-direction:column}.timer{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+ <div class="brand"><div class="logo">PT</div><div><div class="eyebrow">Plano de preparação física</div><h1>Projeto TAF</h1><p>GCM Aracaju · Treino, consistência e evolução</p></div></div>
+ <div class="top-actions"><button class="btn dark" id="exportBtn">↗ Exportar dados</button><button class="btn primary" id="resetBtn">↻ Reiniciar plano</button></div>
+</header>
+<nav class="nav" aria-label="Navegação principal">
+ <button class="active" data-view="inicio">Visão geral</button><button data-view="treinos">Treinos</button><button data-view="taf">Painel TAF</button><button data-view="plano">Plano de 30 dias</button><button data-view="guia">Guia e segurança</button>
+</nav>
+
+<section id="inicio" class="view active">
+ <div class="grid kpis">
+  <div class="card"><div class="kpi-label">BARRA FIXA ATUAL</div><div class="kpi-value"><span id="kpiBar">2</span><small style="font-size:14px;color:var(--muted)"> / 8</small></div><div class="progress"><span id="barProgress"></span></div><div class="kpi-note">Mínimo TAF: 5 repetições</div></div>
+  <div class="card"><div class="kpi-label">CORRIDA DE REFERÊNCIA</div><div class="kpi-value">27:00</div><div class="kpi-note">5 km · ritmo 5:24/km</div></div>
+  <div class="card"><div class="kpi-label">META DE CORRIDA</div><div class="kpi-value">2.300 m</div><div class="kpi-note">Em até 12 minutos · 5:13/km</div></div>
+  <div class="card"><div class="kpi-label">PRÓXIMO MARCO</div><div class="kpi-value" id="overallDone">0%</div><div class="kpi-note">Sessões concluídas no plano</div></div>
+ </div>
+ <div class="grid dashboard-grid">
+  <div class="card">
+   <div class="section-head" style="margin-top:0"><div><h2>Semana de treino</h2><p>Toque em um dia para abrir os exercícios.</p></div><span class="tag lime">2 focos: barra + TAF</span></div>
+   <div class="grid week-grid" id="weekGrid"></div>
+  </div>
+  <div class="card">
+   <h2>Foco da preparação</h2>
+   <div class="stack">
+    <div class="row"><span class="tag blue">Prioridade 1</span><strong>Barra fixa</strong></div><p class="muted" style="margin:0">Duas sessões principais e, se houver recuperação, um estímulo técnico leve. Evite falha repetida.</p>
+    <div class="row"><span class="tag green">Prioridade 2</span><strong>Corrida</strong></div><p class="muted" style="margin:0">Intervalos na esteira, corrida leve e sessão específica na orla, conforme recuperação e logística.</p>
+    <div class="row"><span class="tag amber">Atenção</span><strong>Recuperação</strong></div><p class="muted" style="margin:0">Quarta é força de pernas; sexta deve ser leve ou descanso antes de uma avaliação exigente no sábado.</p>
+    <div class="notice warn"><b>Data do TAF:</b> ainda não confirmada. Os 30 dias são uma hipótese de planejamento, não uma data oficial.</div>
+   </div>
+  </div>
+ </div>
+ <div class="section-head"><div><h2>Checklist de hoje</h2><p>Marque o que fez; o progresso é salvo neste navegador.</p></div><button class="btn soft" id="openToday">Abrir treino</button></div>
+ <div class="card"><div id="todayChecklist" class="checklist"></div><div class="row between" style="margin-top:12px"><span class="muted small" id="todayProgressText">0 de 0 concluídos</span><button class="btn" id="clearToday">Desmarcar sessão</button></div></div>
+</section>
+
+<section id="treinos" class="view">
+ <div class="section-head"><div><h2>Treinos detalhados</h2><p>Marque exercícios, abra instruções e use o temporizador de descanso.</p></div><span class="tag blue">Plano-base semanal</span></div>
+ <div class="day-tabs" id="dayTabs"></div>
+ <div class="workout-layout" style="margin-top:14px">
+  <div class="card">
+   <div class="row between" style="align-items:flex-start"><div><div class="eyebrow" id="workoutLabel" style="color:var(--muted)">SEGUNDA-FEIRA</div><h2 id="workoutTitle">Costas, bíceps e barra fixa</h2><p class="muted" id="workoutSubtitle" style="margin:0;font-size:13px"></p></div><span class="tag" id="workoutTag">Força</span></div>
+   <div class="progress" style="margin:16px 0 12px"><span id="workoutProgress"></span></div>
+   <div class="row between" style="margin-bottom:12px"><span class="muted small" id="workoutDoneText">0/0 exercícios</span><button class="btn soft" id="completeWorkout">Concluir sessão</button></div>
+   <div class="workout-tools"><button class="btn primary" id="addExerciseBtn" type="button">＋ Adicionar exercício</button><button class="btn" id="resetWorkoutBtn" type="button">Restaurar treino original deste dia</button></div>
+   <div class="editor-panel hidden" id="exerciseEditor"><h3 id="editorTitle">Adicionar exercício</h3><form id="exerciseForm"><div class="fields"><div class="field"><label for="editName">Nome do exercício</label><input id="editName" required maxlength="100" placeholder="Ex.: Remada baixa"></div><div class="field"><label for="editDose">Séries × repetições/tempo</label><input id="editDose" required maxlength="80" placeholder="Ex.: 3 × 10–12"></div></div><div class="field"><label for="editInstructions">Orientações</label><textarea id="editInstructions" required maxlength="500" placeholder="Como executar, cuidados e observações"></textarea></div><div class="editor-actions" style="margin-top:10px"><button class="btn primary" type="submit">Salvar exercício</button><button class="btn" id="cancelEditBtn" type="button">Cancelar</button></div></form></div>
+   <div class="notice" style="margin-bottom:12px">Você pode reorganizar os exercícios pelas setas, editar séries/repetições e orientações, remover itens ou adicionar exercícios. As alterações ficam salvas neste navegador.</div>
+   <div class="exercise-list" id="exerciseList"></div>
+   <div class="notice" style="margin-top:14px" id="workoutNote"></div>
+  </div>
+  <aside class="stack side-sticky">
+   <div class="card"><h3>Temporizador de descanso</h3><p class="muted small">Use entre séries. O timer funciona enquanto esta página estiver aberta.</p><div class="timer" id="timerDisplay">02:00</div><div class="fields" style="margin:12px 0"><div class="field"><label for="timerMinutes">Minutos</label><input type="number" min="0" max="30" id="timerMinutes" value="2"></div><div class="field"><label for="timerSeconds">Segundos</label><input type="number" min="0" max="59" id="timerSeconds" value="0"></div></div><div class="timer-buttons"><button class="btn primary" id="timerStart">▶ Iniciar</button><button class="btn" id="timerPause">Ⅱ Pausar</button><button class="btn" id="timerReset">↺ Zerar</button></div></div>
+   <div class="card"><h3>Registro rápido</h3><div class="fields"><div class="field"><label for="sessionRpe">Esforço (1–10)</label><select id="sessionRpe"><option value="">Selecionar</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div><div class="field"><label for="sessionPain">Dor?</label><select id="sessionPain"><option>Não</option><option>Leve</option><option>Persistente/limitante</option></select></div></div><div class="field" style="margin-top:10px"><label for="sessionNotes">Observações</label><textarea id="sessionNotes" placeholder="Ex.: barras válidas, cargas, fadiga..."></textarea></div><button class="btn primary" id="saveSession" style="width:100%;margin-top:10px">Salvar registro</button></div>
+  </aside>
+ </div>
+</section>
+
+<section id="taf" class="view">
+ <div class="section-head"><div><h2>Painel de desempenho do TAF</h2><p>Registre apenas resultados medidos com o protocolo correto do edital.</p></div><span class="tag amber">Validar edital oficial</span></div>
+ <div class="grid dashboard-grid">
+  <div class="card">
+   <h2>Resultados mais recentes</h2>
+   <div class="stack" id="tafStatuses"></div>
+   <div class="notice warn" style="margin-top:14px">Os critérios informados são provisórios até a conferência do edital e das regras de execução da GCM de Aracaju. Uma repetição fora do padrão pode não ser contabilizada.</div>
+  </div>
+  <div class="card">
+   <h2>Adicionar avaliação</h2>
+   <form id="tafForm" class="stack">
+    <div class="field"><label for="testDate">Data da avaliação</label><input id="testDate" type="date" required></div>
+    <div class="field"><label for="tafType">Prova</label><select id="tafType"><option value="bar">Barra fixa (repetições)</option><option value="abs">Abdominal (repetições em 1 min)</option><option value="run">Corrida de 12 min (metros)</option><option value="swim">Natação 25 m (segundos)</option></select></div>
+    <div class="field"><label for="tafValue">Resultado</label><input id="tafValue" type="number" min="0" step="any" placeholder="Informe o valor medido" required></div>
+    <div class="field"><label for="tafNotes">Observações</label><textarea id="tafNotes" placeholder="Protocolo, condições, sensação, validade das repetições..."></textarea></div>
+    <button class="btn primary" type="submit">Salvar avaliação</button>
+   </form>
+  </div>
+ </div>
+ <div class="card" style="margin-top:16px"><div class="section-head" style="margin-top:0"><div><h2>Histórico de avaliações</h2><p>Dados registrados neste navegador.</p></div><button class="btn" id="clearTests">Limpar histórico</button></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Prova</th><th>Resultado</th><th>Observação</th><th></th></tr></thead><tbody id="tafHistory"></tbody></table></div></div>
+</section>
+
+<section id="plano" class="view">
+ <div class="section-head"><div><h2>Plano flexível de 30 dias</h2><p>Use como referência e adapte à data oficial do TAF e à recuperação.</p></div><span class="tag blue">4 fases</span></div>
+ <div class="notice warn">Não compense sessões perdidas com treinos dobrados. Se a data oficial for anunciada, ajuste a redução de carga para os dias anteriores à prova.</div>
+ <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:14px">
+  <div class="card"><div class="day-image"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="32" cy="32" r="22"/><path d="M22 33l7 7 14-16"/></svg></div><span class="tag green">Dias 1–7</span><h3 style="margin-top:10px">Avaliar e adaptar</h3><ul><li>Registrar barra válida sem testar máximo repetidamente.</li><li>Medir corrida de 12 minutos quando descansado.</li><li>Confirmar protocolo de abdominal e natação.</li><li>Começar com volume moderado.</li></ul></div>
+  <div class="card"><div class="day-image"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 45h44M16 45V27h32v18M22 27V18h20v9M25 36h14"/></svg></div><span class="tag blue">Dias 8–14</span><h3 style="margin-top:10px">Construir consistência</h3><ul><li>Manter duas sessões principais de barra.</li><li>Ajustar o auxílio no graviton gradualmente.</li><li>Progredir corrida apenas se a recuperação for boa.</li><li>Priorizar técnica e sono.</li></ul></div>
+  <div class="card"><div class="day-image"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 47l12-14 9 7 19-23"/><path d="M39 17h13v13"/></svg></div><span class="tag amber">Dias 15–21</span><h3 style="margin-top:10px">Especificidade</h3><ul><li>Praticar séries de barra de qualidade, sem forçar.</li><li>Fazer uma avaliação de corrida se estiver recuperado.</li><li>Manter musculação sem falha frequente.</li><li>Confirmar regras do edital.</li></ul></div>
+  <div class="card"><div class="day-image"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 12h28v40H18zM24 23h16M24 31h16M24 39h10"/></svg></div><span class="tag lime">Dias 22–30</span><h3 style="margin-top:10px">Reduzir fadiga</h3><ul><li>Diminuir volume na semana da prova.</li><li>Evitar testes máximos e exercícios novos perto do TAF.</li><li>Manter técnica e pequenas doses de intensidade.</li><li>Chegar descansado.</li></ul></div>
+ </div>
+ <div class="card" style="margin-top:16px"><h2>Checklist de preparação</h2><div class="checklist" id="planChecklist"></div><div class="row between" style="margin-top:12px"><span class="muted small" id="planProgressText">0 itens concluídos</span><button class="btn" id="resetPlanChecklist">Reiniciar checklist</button></div></div>
+</section>
+
+<section id="guia" class="view">
+ <div class="section-head"><div><h2>Guia de execução e segurança</h2><p>Orientações gerais; o edital e a avaliação profissional prevalecem.</p></div></div>
+ <div class="grid dashboard-grid">
+  <div class="stack">
+   <div class="card"><h3>Barra fixa</h3><ul><li>Priorize repetições válidas e controladas, conforme o edital.</li><li>Descanse 2–3 minutos entre séries principais.</li><li>Não faça tentativas máximas todos os dias.</li><li>Use o graviton para acumular volume sem perder a técnica.</li><li>Interrompa se houver dor articular ou perda importante de controle.</li></ul></div>
+   <div class="card"><h3>Corrida e prevenção</h3><ul><li>Faça aquecimento antes de intervalos.</li><li>Use a esteira em velocidade compatível com a técnica; não segure nas barras durante a corrida.</li><li>Aumente carga gradualmente; não transforme toda sessão em teste máximo.</li><li>Dor localizada que piora, altera a passada ou persiste exige redução/pausa e avaliação profissional.</li><li>Evite combinar aumento brusco de corrida, saltos e treino pesado de pernas.</li></ul></div>
+   <div class="card"><h3>Força e hipertrofia</h3><ul><li>Trabalhe geralmente com 2–3 repetições em reserva.</li><li>Use amplitude controlada e técnica estável.</li><li>O volume pode ser maior, mas mantenha os isoladores em 2 séries e evite levar todas as séries à falha, especialmente durante a preparação para o TAF.</li><li>Busque sono regular e alimentação suficiente para sustentar o treino.</li></ul></div>
+  </div>
+  <div class="stack">
+   <div class="card"><h3>Nutrição e recuperação</h3><p>Para 77 kg, uma referência geral de proteína é 1,6–2,2 g/kg/dia (aproximadamente 123–169 g/dia), desde que não haja contraindicação individual. Evite déficit calórico agressivo durante a preparação. Ajustes clínicos devem ser feitos com profissional qualificado.</p><div class="metric-row"><div class="metric"><strong>7–9 h</strong><span>sono por noite</span></div><div class="metric"><strong>2–3</strong><span>reps em reserva</span></div><div class="metric"><strong>1</strong><span>dia de descanso</span></div></div></div>
+   <div class="card"><h3>Natação / mar</h3><ul><li>Confirme estilo, largada, chegada e regras oficiais.</li><li>Não faça teste máximo sozinho em mar aberto.</li><li>Observe correntes, ondas, clima e orientação dos salva-vidas.</li><li>Evite natação intensa imediatamente após corrida máxima.</li></ul></div>
+   <div class="card"><h3>Jiu-jítsu</h3><p>Durante a preparação curta, não adicione aulas intensas sem substituir outra carga. Pegadas, ombros e costas também são exigidos na barra. Se começar, prefira aula técnica moderada e monitore a recuperação.</p></div>
+   <div class="notice danger"><b>Sinal de alerta:</b> dor forte, piora progressiva, inchaço, perda de força ou alteração da passada não devem ser ignorados. Suspenda o exercício provocador e procure avaliação adequada.</div>
+  </div>
+ </div>
+ <div class="card" style="margin-top:16px"><h3>Informações ainda a confirmar</h3><div class="checklist">
+  <div class="checkline"><input type="checkbox" id="confirm1"><label for="confirm1">Conferir edital e protocolo oficial do TAF da GCM Aracaju.</label></div>
+  <div class="checkline"><input type="checkbox" id="confirm2"><label for="confirm2">Confirmar execução, pegada e critérios de validade da barra fixa.</label></div>
+  <div class="checkline"><input type="checkbox" id="confirm3"><label for="confirm3">Confirmar abdominal, estilo e condições da natação.</label></div>
+  <div class="checkline"><input type="checkbox" id="confirm4"><label for="confirm4">Confirmar data oficial e ajustar a semana de redução de carga.</label></div>
+ </div></div>
+</section>
+<div class="footer">Projeto TAF · Aplicativo demonstrativo local · Os registros ficam neste navegador. Não substitui avaliação profissional nem o edital oficial.</div>
+</div>
+<script>
+const days=[
+ {id:'seg',short:'SEG',name:'Segunda-feira',title:'Costas, bíceps e barra fixa',place:'Academia com graviton',tag:'Barra prioritária',tone:'blue',duration:'70–85 min',note:'Faça a barra livre primeiro. Se as repetições ficarem próximas da falha, reduza séries; a qualidade importa mais que o esforço máximo.',items:[
+ ['Barra fixa livre','4 × 1 repetição limpa','Inicie descansado; amplitude e critérios conforme edital. Pare antes de perder a técnica.'],
+ ['Barra fixa no graviton','3 × 5–7','Escolha auxílio que permita repetições controladas, sem balanço. Registre a assistência usada.'],
+ ['Remada com apoio no peito','3 × 8–10','Controle a volta e evite compensar com o tronco.'],
+ ['Puxada na polia','2 × 8–12','Pegada confortável, sem puxar atrás da nuca.'],
+ ['Rosca direta com barra W','2 × 8–12','Cotovelos estáveis e sem balanço.'],
+ ['Rosca martelo','2 × 10–12','Movimento controlado, punhos neutros.'],
+ ['Depressão escapular na barra/graviton','2 × 8–12','Movimento curto e controlado, sem dobrar muito os cotovelos; pratique a posição inicial da barra.'],
+ ['Pulldown com braços estendidos','2 × 12–15','Cotovelos levemente flexionados e tronco estável.'],
+ ['Face pull na polia','2 × 12–15','Puxe em direção ao rosto, sem elevar os ombros.'],
+ ['Rosca inclinada com halteres','2 × 10–12','Use carga moderada e evite balanço.']]},
+ {id:'ter',short:'TER',name:'Terça-feira',title:'Corrida intervalada + core',place:'Academia com esteira',tag:'Corrida + core',tone:'green',duration:'50–65 min',note:'Ajuste os intervalos ao condicionamento atual. O ritmo-alvo do TAF é uma referência, não uma obrigação para todas as repetições. Se houver dor ou fadiga incomum, reduza ou interrompa.',items:[
+ ['Aquecimento','8–12 min','Caminhada rápida ou trote leve, seguido de mobilidade dinâmica.'],
+ ['Intervalos de corrida','Semana 1: 3–4 × 400 m','Ritmo controlado, sem sprint. Recuperação de cerca de 2 min caminhando/trotando. Nas semanas seguintes, progredir somente se tolerado.'],
+ ['Desaquecimento','5–10 min','Trote ou caminhada leve.'],
+ ['Prancha frontal','3 × 30–45 s','Respiração contínua, tronco alinhado.'],
+ ['Prancha lateral','2 × 20–30 s por lado','Manter quadril alinhado, sem dor.'],
+ ['Dead bug','2 × 8–10 por lado','Lombar controlada e movimentos lentos.'],
+ ['Abdominal do TAF','2 séries submáximas','Reproduzir apenas o protocolo confirmado; não fazer todas as séries até a falha.'],
+ ['Pallof press na polia','2 × 10–12 por lado','Resista à rotação do tronco e mantenha a postura estável.'],
+ ['Elevação de joelhos ou reverse crunch','2 × 10–15','Faça sem impulso e sem desconforto lombar.'],
+ ['Extensão lombar leve','2 × 10–12','Amplitude curta e controlada; não hiperestenda a coluna.']]},
+ {id:'qua',short:'QUA',name:'Quarta-feira',title:'Pernas e panturrilhas',place:'Musculação',tag:'Força inferior',tone:'amber',duration:'70–85 min',note:'Mantenha 2–3 repetições em reserva. Como há corrida no fim de semana, reduza séries se houver dor muscular que altere a passada. Pliometria é opcional e não necessária para o TAF.',items:[
+ ['Agachamento','3 × 6–10','Carga controlada, amplitude tolerada e técnica consistente.'],
+ ['Stiff com halteres','3 × 8–10','Dobre o quadril, mantenha a coluna estável e não force amplitude.'],
+ ['Afundo reverso','2 × 8 por perna','Passo controlado; substitua por máquina se houver desconforto ou equilíbrio limitado.'],
+ ['Mesa flexora','3 × 10–12','Controle a fase de retorno.'],
+ ['Panturrilha em pé','3 × 12–15','Amplitude confortável, sem quicar.'],
+ ['Panturrilha com joelhos flexionados','2 × 12–15','Foco no sóleo, com controle.'],
+ ['Tibial anterior','2 × 15–20','Movimento sem dor, com resistência leve.'],
+ ['Leg press','2 × 10–12','Não trave os joelhos; use amplitude que mantenha a pelve estável.'],
+ ['Hip thrust','3 × 8–12','Pause brevemente no topo, sem arquear excessivamente a lombar.'],
+ ['Cadeira extensora','2 × 12–15','Subida e descida controladas, sem chutar a carga.'],
+ ['Abdução de quadril na máquina','2 × 12–20','Controle o retorno e evite usar impulso.']]},
+ {id:'qui',short:'QUI',name:'Quinta-feira',title:'Peito, ombros, tríceps e barra assistida',place:'Academia com graviton',tag:'Superiores',tone:'blue',duration:'70–85 min',note:'O volume de barra deve ser suficiente para praticar sem gerar fadiga excessiva. Use pegada confortável e pare se surgir dor articular.',items:[
+ ['Barra fixa assistida no graviton','4 × 5–8','Use assistência para completar todas as repetições com controle. Registre a carga de assistência.'],
+ ['Supino reto','3 × 6–10','Sem falha forçada; técnica estável.'],
+ ['Supino inclinado com halteres','2 × 8–12','Amplitude confortável.'],
+ ['Crucifixo na máquina','2 × 10–15','Amplitude confortável e sem forçar a articulação do ombro.'],
+ ['Desenvolvimento com halteres','2 × 8–12','Evite compensar com a lombar.'],
+ ['Elevação lateral','2 × 12–15','Carga leve/moderada e movimento controlado.'],
+ ['Crucifixo inverso na máquina','2 × 12–15','Foco na parte posterior dos ombros, sem embalar o tronco.'],
+ ['Tríceps corda','2 × 10–15','Cotovelos estáveis.'],
+ ['Tríceps acima da cabeça na polia','2 × 10–12','Use apenas se não houver desconforto no ombro ou cotovelo.']
+]},
+ {id:'sex',short:'SEX',name:'Sexta-feira',title:'Corrida leve na esteira',place:'Academia com esteira',tag:'Recuperação ativa',tone:'green',duration:'15–25 min',note:'Esta sessão deve ser fácil. Se o sábado for um teste máximo ou houver fadiga nas pernas, descanse na sexta. Não compense a sessão perdida no dia seguinte.',items:[
+ ['Corrida confortável','15–25 min','Ritmo em que seja possível falar frases completas. Sem tiros, sprint ou inclinação elevada.'],
+ ['Mobilidade leve (opcional)','5–8 min','Mobilidade confortável de tornozelos, quadris e panturrilhas, sem alongamento agressivo.']]},
+ {id:'sab',short:'SÁB',name:'Sábado',title:'Corrida na orla + natação opcional',place:'Orla / piscina ou mar seguro',tag:'Específico TAF',tone:'amber',duration:'Variável',note:'Alternar corrida contínua, trabalho de ritmo e avaliação de 12 minutos. Não faça teste máximo toda semana. Se nadar, prefira outro período e ajuste a intensidade. Em mar aberto, nunca teste sozinho.',items:[
+ ['Aquecimento','8–12 min','Trote leve e mobilidade dinâmica antes de ritmo ou avaliação.'],
+ ['Sessão principal','Conforme semana','Semana 1: avaliação inicial se descansado. Semana 2: corrida confortável ou 2 × 800 m controlados. Semana 3: simulado de 12 min se recuperado. Semana 4: sessão curta e leve.'],
+ ['Desaquecimento','5–10 min','Caminhada ou trote leve.'],
+ ['Natação opcional','4–8 × 25 m leves/técnicos','Confirmar estilo e regras do edital. Não nadar intensamente após corrida máxima.']]},
+ {id:'dom',short:'DOM',name:'Domingo',title:'Descanso ou natação leve',place:'Recuperação / piscina ou mar seguro',tag:'Recuperação',tone:'green',duration:'Opcional',note:'Se a natação acontecer no domingo, mantenha-a leve/técnica. Caso nade no sábado, priorize descanso. Evite acumular corrida, musculação e natação intensa em dias seguidos.',items:[
+ ['Descanso','Livre','Sem treino obrigatório de força, corrida ou barra. Caminhada leve é opcional.'],
+ ['Natação técnica (opcional)','Sessão leve','Somente se não foi possível no sábado e houver recuperação adequada. Segurança no mar é indispensável.']]}
+];
+const originalDays=days.map(d=>({...d,items:d.items.map(x=>[...x])}));
+const planChecks=['Registrar a linha de base de barra fixa com técnica válida.','Medir corrida de 12 minutos em percurso plano e conhecido.','Medir abdominal de acordo com o protocolo oficial.','Cronometrar 25 m de natação e confirmar o estilo exigido.','Registrar cargas/assistência do graviton.','Verificar sono, fadiga e dores antes de cada sessão.','Conferir o edital e a data oficial do TAF.','Planejar redução de carga para a semana da prova.'];
+const defaultState={bar:2,tests:[],done:{},sessions:{},planChecks:{},confirmed:{},rpe:{},pain:{},notes:{},workouts:{}};
+let state=loadState(),selectedDay='seg',timerRemaining=120,timerInterval=null,timerRunning=false,editingIndex=null;
+function loadState(){try{return {...defaultState,...JSON.parse(localStorage.getItem('projetoTAFState')||'{}')}}catch(e){return {...defaultState}}}
+// Reaplica os treinos personalizados guardados neste navegador.
+function applySavedWorkouts(){days.forEach(d=>{if(Array.isArray(state.workouts?.[d.id]))d.items=state.workouts[d.id].map(x=>[String(x[0]??''),String(x[1]??''),String(x[2]??'')])})}
+applySavedWorkouts();
+function saveState(){localStorage.setItem('projetoTAFState',JSON.stringify(state));renderAll()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function isDone(day,i){return !!(state.done[day]&&state.done[day][i])}
+function doneCount(day){return days.find(d=>d.id===day).items.filter((_,i)=>isDone(day,i)).length}
+function sessionDone(day){return doneCount(day)===days.find(d=>d.id===day).items.length}
+function renderWeek(){document.getElementById('weekGrid').innerHTML=days.map(d=>`<div class="day-card"><div class="day">${d.short}</div><div class="day-title">${d.title}</div><span class="tag ${d.tone}">${d.id==='sab'?'Orla':d.id==='dom'?'Descanso':d.place.split(' ')[0]}</span><button class="btn" onclick="selectDay('${d.id}');showView('treinos')">Abrir treino →</button></div>`).join('')}
+function renderTabs(){document.getElementById('dayTabs').innerHTML=days.map(d=>`<button class="${selectedDay===d.id?'active':''}" onclick="selectDay('${d.id}')">${d.short}</button>`).join('')}
+function renderWorkout(){const d=days.find(x=>x.id===selectedDay);document.getElementById('workoutLabel').textContent=d.name.toUpperCase()+' · '+d.place.toUpperCase();document.getElementById('workoutTitle').textContent=d.title;document.getElementById('workoutSubtitle').textContent=d.duration+' · '+d.place;document.getElementById('workoutTag').textContent=d.tag;document.getElementById('workoutTag').className='tag '+d.tone;document.getElementById('workoutNote').textContent=d.note;document.getElementById('exerciseList').innerHTML=d.items.map((it,i)=>`<div class="exercise ${isDone(d.id,i)?'done':''}" id="ex-${d.id}-${i}"><button class="check" aria-label="Marcar exercício" onclick="toggleExercise('${d.id}',${i})">${isDone(d.id,i)?'✓':''}</button><div><h4>${esc(it[0])}</h4><p>${esc(it[2])}</p><div class="exercise-actions"><button class="btn" onclick="toggleDetails('${d.id}',${i})">Detalhes</button><button class="btn soft" onclick="toggleExercise('${d.id}',${i})">${isDone(d.id,i)?'Desmarcar':'Concluir'}</button><button class="btn order-btn" title="Mover para cima" aria-label="Mover para cima" onclick="moveExercise(${i},-1)" ${i===0?'disabled':''}>↑</button><button class="btn order-btn" title="Mover para baixo" aria-label="Mover para baixo" onclick="moveExercise(${i},1)" ${i===d.items.length-1?'disabled':''}>↓</button><button class="btn" onclick="editExercise(${i})">Editar</button><button class="btn danger" onclick="removeExercise(${i})">Remover</button></div></div><div class="dose">${esc(it[1])}</div><div class="details"><b>Orientação:</b> ${esc(it[2])}<br><b>Controle:</b> registre esforço e qualquer sintoma; interrompa se houver dor aguda ou técnica comprometida.</div></div>`).join('');const n=doneCount(d.id);document.getElementById('workoutProgress').style.width=(d.items.length?n/d.items.length*100:0)+'%';document.getElementById('workoutDoneText').textContent=`${n}/${d.items.length} exercícios concluídos`;document.getElementById('sessionRpe').value=state.rpe[d.id]||'';document.getElementById('sessionPain').value=state.pain[d.id]||'Não';document.getElementById('sessionNotes').value=state.notes[d.id]||''}
+function saveWorkoutEdits(){state.workouts[selectedDay]=days.find(d=>d.id===selectedDay).items.map(x=>[...x]);state.done[selectedDay]={};persistOnly();renderAll()}
+function openExerciseEditor(index=null){editingIndex=index;const d=days.find(x=>x.id===selectedDay),item=index===null?['','','']:d.items[index];document.getElementById('editorTitle').textContent=index===null?'Adicionar exercício':'Editar exercício';document.getElementById('editName').value=item[0];document.getElementById('editDose').value=item[1];document.getElementById('editInstructions').value=item[2];document.getElementById('exerciseEditor').classList.remove('hidden');document.getElementById('exerciseEditor').scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('editName').focus()}
+function editExercise(i){openExerciseEditor(i)}
+function moveExercise(i,delta){const d=days.find(x=>x.id===selectedDay),j=i+delta;if(j<0||j>=d.items.length)return;[d.items[i],d.items[j]]=[d.items[j],d.items[i]];saveWorkoutEdits()}
+function removeExercise(i){const d=days.find(x=>x.id===selectedDay);if(!confirm(`Remover “${d.items[i][0]}” deste treino?`))return;d.items.splice(i,1);document.getElementById('exerciseEditor').classList.add('hidden');saveWorkoutEdits()}
+document.getElementById('addExerciseBtn').onclick=()=>openExerciseEditor();document.getElementById('cancelEditBtn').onclick=()=>document.getElementById('exerciseEditor').classList.add('hidden');document.getElementById('exerciseForm').onsubmit=e=>{e.preventDefault();const d=days.find(x=>x.id===selectedDay),item=[document.getElementById('editName').value.trim(),document.getElementById('editDose').value.trim(),document.getElementById('editInstructions').value.trim()];if(!item.every(Boolean))return;if(editingIndex===null)d.items.push(item);else d.items[editingIndex]=item;document.getElementById('exerciseEditor').classList.add('hidden');saveWorkoutEdits()};
+document.getElementById('resetWorkoutBtn').onclick=()=>{if(!confirm('Restaurar a lista original de exercícios deste dia? As alterações feitas neste treino serão perdidas.'))return;delete state.workouts[selectedDay];const original=originalDays.find(x=>x.id===selectedDay);days.find(x=>x.id===selectedDay).items=original.items.map(x=>[...x]);state.done[selectedDay]={};persistOnly();renderAll();document.getElementById('exerciseEditor').classList.add('hidden')};
+function renderToday(){const d=days.find(x=>x.id===selectedDay);document.getElementById('todayChecklist').innerHTML=d.items.map((it,i)=>`<div class="checkline"><input type="checkbox" id="today-${i}" ${isDone(d.id,i)?'checked':''} onchange="toggleExercise('${d.id}',${i})"><label for="today-${i}"><b>${esc(it[0])}</b><br><span class="muted small">${esc(it[1])}</span></label></div>`).join('');document.getElementById('todayProgressText').textContent=`${doneCount(d.id)} de ${d.items.length} concluídos`}
+function renderKpis(){document.getElementById('kpiBar').textContent=state.bar??2;document.getElementById('barProgress').style.width=Math.min(100,Math.max(0,(Number(state.bar)||0)/8*100))+'%';let total=days.reduce((a,d)=>a+d.items.length,0),done=days.reduce((a,d)=>a+doneCount(d.id),0);let p=Math.round(done/total*100);document.getElementById('overallDone').textContent=p+'%'}
+function renderPlanChecks(){document.getElementById('planChecklist').innerHTML=planChecks.map((x,i)=>`<div class="checkline"><input type="checkbox" id="pc${i}" ${state.planChecks[i]?'checked':''} onchange="togglePlanCheck(${i},this.checked)"><label for="pc${i}">${x}</label></div>`).join('');document.getElementById('planProgressText').textContent=`${Object.values(state.planChecks).filter(Boolean).length} de ${planChecks.length} itens concluídos`;['confirm1','confirm2','confirm3','confirm4'].forEach((id,i)=>{let el=document.getElementById(id);if(el){el.checked=!!state.confirmed[i];el.onchange=()=>{state.confirmed[i]=el.checked;persistOnly()}}})}
+function testMeta(type){return {bar:{label:'Barra fixa',goal:5,unit:'repetições',better:'higher'},abs:{label:'Abdominal',goal:35,unit:'repetições/min',better:'higher'},run:{label:'Corrida 12 min',goal:2300,unit:'m',better:'higher'},swim:{label:'Natação 25 m',goal:120,unit:'segundos',better:'lower'}}[type]}
+function latestTest(type){return state.tests.filter(t=>t.type===type).sort((a,b)=>b.date.localeCompare(a.date))[0]}
+function testResultText(t){if(!t)return 'Sem avaliação registrada';let m=testMeta(t.type);return `${t.value} ${m.unit} · ${t.date}`}
+function testGood(t){if(!t)return false;let m=testMeta(t.type);return m.better==='higher'?Number(t.value)>=m.goal:Number(t.value)<=m.goal}
+function renderTaf(){const types=['bar','abs','run','swim'];document.getElementById('tafStatuses').innerHTML=types.map(type=>{let m=testMeta(type),t=latestTest(type);return `<div class="row between" style="align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${m.label}</b><div class="muted small">Meta informada: ${m.better==='lower'?'até ':''}${m.goal} ${m.unit}</div><div class="small" style="margin-top:5px">${esc(testResultText(t))}</div></div><span class="status ${t?(testGood(t)?'good':'pending'):'pending'}">${t?(testGood(t)?'Meta atingida':'Em desenvolvimento'):'Pendente'}</span></div>`}).join('');let hist=[...state.tests].sort((a,b)=>b.date.localeCompare(a.date));document.getElementById('tafHistory').innerHTML=hist.length?hist.map(t=>`<tr><td>${esc(t.date)}</td><td>${testMeta(t.type).label}</td><td>${esc(t.value)} ${testMeta(t.type).unit}</td><td>${esc(t.notes||'—')}</td><td><button class="btn danger" onclick="deleteTest('${t.id}')">Excluir</button></td></tr>`).join(''):'<tr><td colspan="5" class="empty">Nenhuma avaliação registrada.</td></tr>'}
+function renderAll(){renderWeek();renderTabs();renderWorkout();renderToday();renderKpis();renderPlanChecks();renderTaf()}
+function persistOnly(){localStorage.setItem('projetoTAFState',JSON.stringify(state))}
+function selectDay(id){selectedDay=id;renderTabs();renderWorkout();renderToday()}
+function toggleExercise(day,i){if(!state.done[day])state.done[day]={};state.done[day][i]=!state.done[day][i];saveState()}
+function toggleDetails(day,i){document.getElementById(`ex-${day}-${i}`).classList.toggle('open')}
+function togglePlanCheck(i,v){state.planChecks[i]=v;saveState()}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='treinos'){renderTabs();renderWorkout()}}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+document.getElementById('openToday').onclick=()=>{showView('treinos');renderWorkout()};
+document.getElementById('clearToday').onclick=()=>{state.done[selectedDay]={};saveState()};
+document.getElementById('completeWorkout').onclick=()=>{const d=days.find(x=>x.id===selectedDay);if(!state.done[d.id])state.done[d.id]={};d.items.forEach((_,i)=>state.done[d.id][i]=true);saveState()};
+document.getElementById('saveSession').onclick=()=>{state.rpe[selectedDay]=document.getElementById('sessionRpe').value;state.pain[selectedDay]=document.getElementById('sessionPain').value;state.notes[selectedDay]=document.getElementById('sessionNotes').value;saveState();alert('Registro salvo neste navegador.')};
+function timerFormat(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function setTimerFromInputs(){timerRemaining=Math.max(0,Number(document.getElementById('timerMinutes').value||0)*60+Number(document.getElementById('timerSeconds').value||0));document.getElementById('timerDisplay').textContent=timerFormat(timerRemaining)}
+document.getElementById('timerStart').onclick=()=>{if(timerRunning)return;if(timerRemaining<=0)setTimerFromInputs();timerRunning=true;timerInterval=setInterval(()=>{timerRemaining--;document.getElementById('timerDisplay').textContent=timerFormat(Math.max(0,timerRemaining));if(timerRemaining<=0){clearInterval(timerInterval);timerRunning=false;document.title='Descanso concluído · Projeto TAF';setTimeout(()=>document.title='Projeto TAF — Treino & Evolução',2500)}},1000)};
+document.getElementById('timerPause').onclick=()=>{clearInterval(timerInterval);timerRunning=false};
+document.getElementById('timerReset').onclick=()=>{clearInterval(timerInterval);timerRunning=false;setTimerFromInputs()};
+document.getElementById('timerMinutes').onchange=setTimerFromInputs;document.getElementById('timerSeconds').onchange=setTimerFromInputs;
+document.getElementById('tafForm').onsubmit=e=>{e.preventDefault();const type=document.getElementById('tafType').value,value=Number(document.getElementById('tafValue').value),date=document.getElementById('testDate').value,notes=document.getElementById('tafNotes').value;if(!date||!Number.isFinite(value)||value<0)return;let t={id:Date.now().toString(),type,value,date,notes};state.tests.push(t);if(type==='bar')state.bar=value;persistOnly();renderAll();document.getElementById('tafValue').value='';document.getElementById('tafNotes').value='';renderTaf()};
+function deleteTest(id){state.tests=state.tests.filter(t=>t.id!==id);const latest=latestTest('bar');state.bar=latest?Number(latest.value):2;saveState()}
+document.getElementById('clearTests').onclick=()=>{if(confirm('Excluir todo o histórico de avaliações?')){state.tests=[];state.bar=2;saveState()}};
+document.getElementById('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='projeto-taf-dados.json';a.click();URL.revokeObjectURL(url)};
+document.getElementById('resetBtn').onclick=()=>{if(confirm('Reiniciar todo o plano e apagar registros salvos neste navegador? Esta ação não pode ser desfeita.')){state={...defaultState,done:{},tests:[],sessions:{},planChecks:{},confirmed:{},rpe:{},pain:{},notes:{},workouts:{}};days.forEach(d=>{const o=originalDays.find(x=>x.id===d.id);d.items=o.items.map(x=>[...x])});saveState()}};
+document.getElementById('testDate').value=new Date().toISOString().slice(0,10);
+renderAll();
+</script>
+</body>
+</html>
